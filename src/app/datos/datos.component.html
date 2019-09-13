@@ -1,0 +1,36 @@
+<div class="container">
+        <h3>Aeronaves existentes: {{aeronaves.length}}</h3>
+        <div></div>
+<div *ngFor="let item of arrayOne(aeronaves.length); let i = index;">
+<div class="card" style="margin-bottom: 20px">
+        <h5 class="card-header text-white bg-dark"><h3>Aeronave {{aeronaves[i].callSing}}</h3></h5>
+        <div class="card-body">
+                        <b>Id:</b> {{aeronaves[i].id}} <br>
+                        <b>Horas de uso Actual:</b> {{aeronaves[i].currentHoursUse}} <br>
+                        <br>
+                        <h5 class="card-title"><b>Servicios realizados</b> ({{numeroTotalDeServicios[i]}}):</h5>
+                <div *ngFor="let item of arrayOne(aeronaves[i].maintHistories.length); let j = index;">
+                        <b>Id:</b> {{aeronaves[i].maintHistories[j].id}} <br>
+                        <b>Fecha inicial:</b> {{aeronaves[i].maintHistories[j].dateInit | date:'yyyy-MM-dd'}} <br>
+                        <b>Fecha Final:</b> {{aeronaves[i].maintHistories[j].dateFinish | date:'yyyy-MM-dd'}} <br>
+                        <b>Descripción</b> {{aeronaves[i].maintHistories[j].maintDescript}} <br>
+                        <br>
+                        <h5 class="card-title"><b>Información de Servicios</b>:</h5>
+                        <div *ngFor="let item of arrayOne(aeronaves[i].maintHistories[j].maintCmpActivity); let a = index;">
+                                        <b>Id:</b> {{aeronaves[i].maintHistories[j].maintCmpActivity.id}} <br>
+                                        <b>Nombre:</b> {{aeronaves[i].maintHistories[j].maintCmpActivity.maintCmpActName}} <br>
+                                        <b>Descripción:</b> {{aeronaves[i].maintHistories[j].maintCmpActivity.maintCmpActDescrip}} <br>
+                                        <b>Tiempo total:</b> {{aeronaves[i].maintHistories[j].maintCmpActivity.totalTime}} <br>
+                        </div>
+                        <br>
+                        <b>Lista de servicios ({{numeroTotalDeServicios[i]}}):</b><br>
+
+                        <div *ngFor="let item of arrayOne(aeronaves[i].maintHistories[j].maintTaskHistories.length); let t = index;">
+                                <li><b>Id:</b> {{aeronaves[i].maintHistories[j].maintTaskHistories[t].maintTaskID}} <b>/  Fecha:</b> {{aeronaves[i].maintHistories[j].maintTaskHistories[t].timeStamp | date:"yyyy-MM-dd HH:mm:ss"}}  </li>
+                        </div>
+                        
+                </div>
+        </div>
+</div>
+        
+
